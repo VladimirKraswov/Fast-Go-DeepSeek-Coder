@@ -10,69 +10,79 @@
 
 ### 1. Introduction of DeepSeek Coder
 
-DeepSeek Coder is composed of a series of code language models, each trained from scratch on 2T tokens, with a composition of 87% code and 13% natural language in both English and Chinese. We provide various sizes of the code model, ranging from 1B to 33B versions. Each model is pre-trained on project-level code corpus by employing a window size of 16K and an extra fill-in-the-blank task, to support project-level code completion and infilling. For coding capabilities, DeepSeek Coder achieves state-of-the-art performance among open-source code models on multiple programming languages and various benchmarks.
+DeepSeek Coder — это серия моделей для работы с кодом, каждая из которых обучена с нуля на 2 триллионах токенов. Датасет состоит на **87% из кода** и на **13% из естественного языка** (английский и китайский).  
+
+Мы предоставляем модели разного размера — от **1B до 33B** параметров. Каждая модель предварительно обучена на **коде проектного уровня**, используя **контекстное окно в 16K токенов** и дополнительную задачу **"заполнения пропусков"** (fill-in-the-blank). Это позволяет поддерживать **автодополнение кода** на уровне проекта и вставку недостающих фрагментов.  
+
+С точки зрения возможностей программирования, **DeepSeek Coder демонстрирует передовые результаты среди open-source моделей для кода**, поддерживая **различные языки программирования** и превосходя конкурентов по многим бенчмаркам.
 
 <p align="center">
 <img src="pictures/result.png" alt="result" width="70%">
 </p>
 
-- **Massive Training Data**: Trained from scratch on 2T tokens, including 87% code and 13% linguistic data in both English and Chinese languages.
+- **Огромный объем обучающих данных**: Обучена с нуля на **2 триллионах токенов**, включая **87% кода** и **13% языковых данных** на **английском и китайском** языках.  
 
-- **Highly Flexible & Scalable**: Offered in model sizes of 1B, 5.7B, 6.7B and 33B, enabling users to choose the setup most suitable for their requirements.
+- **Гибкость и масштабируемость**: Доступны модели **размером 1B, 5.7B, 6.7B и 33B**, позволяя пользователям выбрать наиболее подходящую конфигурацию под свои задачи.  
 
-- **Superior Model Performance**: State-of-the-art performance among publicly available code models on HumanEval, MultiPL-E, MBPP, DS-1000, and APPS benchmarks.
+- **Передовая производительность модели**: Демонстрирует **лучшие результаты среди публичных моделей для работы с кодом** на бенчмарках **HumanEval, MultiPL-E, MBPP, DS-1000 и APPS**.  
 
-- **Advanced Code Completion Capabilities**: A window size of 16K and a fill-in-the-blank task, supporting project-level code completion and infilling tasks.
+- **Продвинутые возможности автодополнения кода**: Поддерживает **контекстное окно в 16K токенов** и задачу **заполнения пропусков (fill-in-the-blank)**, что обеспечивает **автодополнение кода на уровне всего проекта**.
 
 #### Supported Programming Languages
 `['ada', 'agda', 'alloy', 'antlr', 'applescript', 'assembly', 'augeas', 'awk', 'batchfile', 'bluespec', 'c', 'c-sharp', 'clojure', 'cmake', 'coffeescript', 'common-lisp', 'cpp', 'css', 'cuda', 'dart', 'dockerfile', 'elixir', 'elm', 'emacs-lisp', 'erlang', 'f-sharp', 'fortran', 'glsl', 'go', 'groovy', 'haskell', 'html', 'idris', 'isabelle', 'java', 'java-server-pages', 'javascript', 'json', 'julia', 'jupyter-notebook', 'kotlin', 'lean', 'literate-agda', 'literate-coffeescript', 'literate-haskell', 'lua', 'makefile', 'maple', 'markdown', 'mathematica', 'matlab', 'ocaml', 'pascal', 'perl', 'php', 'powershell', 'prolog', 'protocol-buffer', 'python', 'r', 'racket', 'restructuredtext', 'rmarkdown', 'ruby', 'rust', 'sas', 'scala', 'scheme', 'shell', 'smalltalk', 'solidity', 'sparql', 'sql', 'stan', 'standard-ml', 'stata', 'systemverilog', 'tcl', 'tcsh', 'tex', 'thrift', 'typescript', 'verilog', 'vhdl', 'visual-basic', 'xslt', 'yacc', 'yaml', 'zig']`
 
-### 2. Evaluation Results
-We evaluate DeepSeek Coder on various coding-related benchmarks.
-Only `pass@1` results on HumanEval (Python and Multilingual), MBPP, and DS-1000 are reported here:
+### **2. Результаты оценки**  
+
+Мы оценили **DeepSeek Coder** на различных бенчмарках, связанных с программированием.  
+
+Ниже представлены только результаты **`pass@1`** на тестах **HumanEval** (Python и мультиязычный), **MBPP** и **DS-1000**:
 
 <p align="center">
 <img src="pictures/table.png" alt="table" width="70%">
 </p>
 
 
-The result shows that DeepSeek-Coder-Base-33B significantly outperforms existing open-source code LLMs. Compared with CodeLlama-34B, it leads by 7.9%, 9.3%, 10.8% and 5.9% respectively on HumanEval Python, HumanEval Multilingual, MBPP and DS-1000.
-Surprisingly, our DeepSeek-Coder-Base-7B reaches the performance of CodeLlama-34B.
-The DeepSeek-Coder-Instruct-33B model after instruction tuning outperforms GPT35-turbo on HumanEval and achieves comparable results with GPT35-turbo on MBPP.
+Результаты показывают, что **DeepSeek-Coder-Base-33B** значительно превосходит существующие **open-source** модели для работы с кодом. В сравнении с **CodeLlama-34B**, наша модель показывает **прирост производительности** на **7.9% (HumanEval Python), 9.3% (HumanEval Multilingual), 10.8% (MBPP) и 5.9% (DS-1000)**.  
 
-More evaluation details can be found in the [Detailed Evaluation](#6-detailed-evaluation-results).
+Удивительно, но **DeepSeek-Coder-Base-7B** достигает уровня производительности **CodeLlama-34B**.  
+
+После **обучения на инструкциях (instruction tuning)**, модель **DeepSeek-Coder-Instruct-33B** демонстрирует **лучшие результаты, чем GPT-3.5-turbo** на **HumanEval** и показывает **сопоставимые результаты с GPT-3.5-turbo** на **MBPP**.  
+
+Более подробную информацию об оценке можно найти в... *(здесь, вероятно, должна быть ссылка или продолжение текста).*[Detailed Evaluation](#6-detailed-evaluation-results).
 
 
-### 3. Procedure of Data Creation and Model Training
+### **3. Процесс создания данных и обучения модели**  
 
-#### Data Creation
+#### **Создание данных**  
 
-- Step 1: Collect code data from GitHub and apply the same filtering rules as [StarCoder Data](https://github.com/bigcode-project/bigcode-dataset) to filter data.
-- Step 2: Parsing the dependencies of files within the same repository to rearrange the file positions based on their dependencies.
-- Step 3: Concatenating dependent files to form a single example and employ repo-level minhash for deduplication.
-- Step 4: Further filtering out low-quality code, such as codes with syntax errors or poor readability.
+- Шаг 1: Сбор данных кода из **GitHub** с применением тех же правил фильтрации, что и... *(здесь, вероятно, должна быть ссылка или упоминание другой модели или методологии).* [StarCoder Data](https://github.com/bigcode-project/bigcode-dataset) to filter data.
+- Шаг 2: **Анализ зависимостей** файлов внутри одного репозитория и **перестановка** файлов в соответствии с их зависимостями.  
+- Шаг 3: **Объединение зависимых файлов** в единый пример и использование **MinHash на уровне репозитория** для удаления дубликатов.  
+- Шаг 4: **Дополнительная фильтрация** низкокачественного кода, включая файлы с **синтаксическими ошибками** и плохой читаемостью.
 
 <img src="pictures/data_clean.png" alt="data_creation" width="100%">
 
 #### Model Training
 
-- Step 1: Initially pre-trained with a dataset consisting of 87% code, 10% code-related language (Github Markdown and StackExchange), and 3% non-code-related Chinese language. Models are pre-trained using 1.8T tokens and a 4K window size in this step.
-- Step 2: Further Pre-training using an extended 16K window size on an additional 200B tokens, resulting in foundational models (**DeepSeek-Coder-Base**).
-- Step 3: Instruction Fine-tuning on 2B tokens of instruction data, resulting in instruction-tuned models (**DeepSeek-Coder-Instruct**).
+### **Процесс обучения модели**  
+
+- Шаг 1: Начальное предобучение на датасете, состоящем из **87% кода, 10% языковых данных, связанных с кодом** (GitHub Markdown и StackExchange) и **3% не связанных с кодом китайских текстов**. На этом этапе модели обучаются на **1.8 триллиона токенов** с **контекстным окном в 4K**.  
+- Шаг 2: Дополнительное предобучение с расширенным **контекстным окном в 16K** на **дополнительных 200 миллиардов токенов**, что приводит к созданию базовых моделей (**DeepSeek-Coder-Base**).  
+- Шаг 3: Тонкая настройка (Instruction Fine-tuning) на **2 миллиардах токенов инструкционных данных**, что формирует **инструкционно-настроенные модели** (**DeepSeek-Coder-Instruct**).
 
 <img src="pictures/model_pretraining.png" alt="model_pretraining" width="100%">
 
 
-### 4. How to Use
-Before proceeding, you'll need to install the necessary dependencies. You can do this by running the following command:
+### **4. Как использовать**  
+Прежде чем начать, необходимо установить все необходимые зависимости. Вы можете сделать это, выполнив следующую команду:
 ```
 pip install -r requirements.txt
 ```
-A demo is also available on the [🤗 Hugging Face Space](https://huggingface.co/spaces/deepseek-ai/deepseek-coder-33b-instruct), and you can run the demo locally using `app.py` in the [demo](https://github.com/deepseek-ai/deepseek-coder/tree/main/demo) folder.  (Thanks to all the HF team for their support)
+Демо-версия также доступна на сайте[🤗 Hugging Face Space](https://huggingface.co/spaces/deepseek-ai/deepseek-coder-33b-instruct), и вы можете запустить демонстрационную версию локально, используя `app.py` в [demo](https://github.com/deepseek-ai/deepseek-coder/tree/main/demo) папке.
 
-Here are some examples of how to use our model.
+Вот несколько примеров того, как использовать нашу модель.
 
-#### 1) Code Completion
+#### 1) Code Completion (Дописывание кода)
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
@@ -99,7 +109,7 @@ def quick_sort(arr):
     return quick_sort(left) + [pivot] + quick_sort(right)
 ```
 
-#### 2) Code Insertion
+#### 2) Code Insertion (Вставка кода)
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
@@ -126,7 +136,7 @@ This code will output the following result:
    for i in range(1, len(arr)):
 ```
 
-#### 3) Chat Model Inference
+#### 3) Chat Model Inference (Работа в режиме чата)
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
@@ -158,24 +168,28 @@ arr = [10, 7, 8, 9, 1, 5]
 print("Original array:", arr)
 print("Sorted array:", quick_sort(arr))
 
-This code works by selecting a 'pivot' element from the array and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The pivot element is then in its final position. The process is then repeated for the sub-arrays.
+Этот алгоритм работает, выбирая **опорный (pivot)** элемент из массива и разделяя остальные элементы на два подмассива в зависимости от того, меньше они или больше опорного. Затем **опорный элемент занимает свою окончательную позицию** в отсортированном массиве. Процесс рекурсивно повторяется для полученных подмассивов.
 ```
 
-If you don't want to use the provided API `apply_chat_template` which loads the template from `tokenizer_config.json`, you can use the following template to chat with our model. Replace the `['content']` with your instructions and the model's previous (if any) responses, then the model will generate the response to the currently given instruction.
+Если вы не хотите использовать предоставленный API `apply_chat_template`, который загружает шаблон из `tokenizer_config.json`, вы можете использовать следующий шаблон для общения с нашей моделью.  
+
+Замените `['content']` на ваши инструкции и предыдущие (если есть) ответы модели. Затем модель сгенерирует ответ на текущую инструкцию.
 ```
-You are an AI programming assistant, utilizing the DeepSeek Coder model, developed by DeepSeek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer.
-### Instruction:
+Вы — AI-ассистент по программированию, использующий модель **DeepSeek Coder**, разработанную компанией **DeepSeek**. Вы отвечаете **только на вопросы, связанные с компьютерными науками**.  
+
+На **политически чувствительные темы, вопросы безопасности, конфиденциальности и другие не относящиеся к компьютерным наукам вопросы** — вы **откажетесь отвечать**.
+### Инструкции:
 ['content']
-### Response:
+### Ответ:
 ['content']
 <|EOT|>
-### Instruction:
+### Инструкции:
 ['content']
-### Response:
+### Ответ:
 
 ```
 
-#### 4) Repository Level Code Completion
+#### 4) Repository Level Code Completion (Завершение кода на уровне репозитория)
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
@@ -266,26 +280,33 @@ print(tokenizer.decode(outputs[0]))
 ```
 
 ---
-In the following scenario, the DeepSeek-Coder-6.7B model effectively calls a class **IrisClassifier** and its member function from the `model.py` file, and also utilizes functions from the `utils.py` file, to correctly complete the **main** function in the `main.py` file for model training and evaluation.
+В следующем сценарии модель **DeepSeek-Coder-6.7B** эффективно использует класс **IrisClassifier** и его методы из файла `model.py`, а также функции из файла `utils.py`, чтобы правильно завершить реализацию **основной (main)** функции в файле `main.py` для обучения и оценки модели.
 
 ![Completion GIF](pictures/completion_demo.gif)
 
 ### 5. How to Fine-tune DeepSeek-Coder
 
-We provide script `finetune/finetune_deepseekcoder.py` for users to finetune our models on downstream tasks.
+Мы предоставляем скрипт **`finetune/finetune_deepseekcoder.py`** для пользователей, чтобы они могли дообучать наши модели для специфических задач.  
 
-The script supports the training with [DeepSpeed](https://github.com/microsoft/DeepSpeed). You need install required packages by:
+Этот скрипт поддерживает обучение с использованием **[DeepSpeed](https://github.com/microsoft/DeepSpeed)**.  
+
+Для установки необходимых пакетов выполните следующую команду:
 
 ```bash
 pip install -r finetune/requirements.txt
 ```
 
-Please follow [Sample Dataset Format](https://huggingface.co/datasets/nickrosh/Evol-Instruct-Code-80k-v1) to prepare your training data.
-Each line is a json-serialized string with two required fields `instruction` and `output`.
+Пожалуйста, подготовьте ваши тренировочные данные в соответствии с форматом [Sample Dataset Format](https://huggingface.co/datasets/nickrosh/Evol-Instruct-Code-80k-v1).  
 
-After data preparation, you can use the sample shell script to finetune `deepseek-ai/deepseek-coder-6.7b-instruct`. 
-Remember to specify `DATA_PATH`, `OUTPUT_PATH`.
-And please choose appropriate hyper-parameters(e.g., `learning_rate`, `per_device_train_batch_size`) according to your scenario.
+Каждая строка должна представлять собой **JSON-объект**, содержащий два обязательных поля:  
+- **`instruction`** – инструкция для модели  
+- **`output`** – ожидаемый ответ  
+
+После подготовки данных вы можете использовать **пример shell-скрипта** для дообучения модели **`deepseek-ai/deepseek-coder-6.7b-instruct`**.  
+
+**Важно:**  
+- Укажите пути к файлам данных и выходному каталогу через переменные **`DATA_PATH`** и **`OUTPUT_PATH`**.  
+- Подберите подходящие **гиперпараметры** (например, **`learning_rate`**, **`per_device_train_batch_size`**) в зависимости от вашей задачи.
 
 ```bash
 DATA_PATH="<your_data_path>"
@@ -318,7 +339,7 @@ cd finetune && deepspeed finetune_deepseekcoder.py \
 ### 6. Detailed Evaluation Results
 
 The reproducible code for the following evaluation results can be found in the [Evaluation](https://github.com/deepseek-ai/deepseek-coder/tree/main/Evaluation) directory.
-#### 1) Multilingual HumanEval Benchmark
+#### 1) Подробные результаты оценки
 ![HumanEval](pictures/HumanEval.png)
 
 #### 2) MBPP Benchmark
@@ -330,11 +351,11 @@ The reproducible code for the following evaluation results can be found in the [
 #### 4) Program-Aid Math Reasoning Benchmark
 ![Math](pictures/Math.png)
 
-### Inference with vLLM
+### Вывод с помощью vLLM
 
 You can also employ [vLLM](https://github.com/vllm-project/vllm) for high-throughput inference.
 
-**Text Completion**
+**Заполнение текста**
 
 ```python
 from vllm import LLM, SamplingParams
@@ -355,7 +376,7 @@ generated_text = [output.outputs[0].text for output in outputs]
 print(generated_text)
 ```
 
-**Chat Completion**
+**авершение общения в чате**
 
 ```python
 from transformers import AutoTokenizer
@@ -383,15 +404,19 @@ print(generated_text)
 
 ### 7. Q&A
 
-#### Could You Provide the tokenizer.model File for Model Quantization?
+#### **Можете ли вы предоставить файл `tokenizer.model` для квантования модели?**  
 
-DeepSeek Coder utilizes the [HuggingFace Tokenizer](https://huggingface.co/docs/tokenizers/index) to implement the Bytelevel-BPE algorithm, with specially designed pre-tokenizers to ensure optimal performance. Currently, there is no direct way to convert the tokenizer into a SentencePiece tokenizer. We are contributing to the open-source quantization methods facilitate the usage of HuggingFace Tokenizer.
+**DeepSeek Coder** использует **[HuggingFace Tokenizer](https://huggingface.co/docs/tokenizers/index)** для реализации **Bytelevel-BPE** алгоритма, с специально разработанными **пред-токенизаторами**, обеспечивающими оптимальную производительность.  
+
+На данный момент **не существует** прямого способа конвертации **HuggingFace Tokenizer** в **SentencePiece Tokenizer**.  
+
+Мы работаем над **открытыми методами квантования**, чтобы упростить использование **HuggingFace Tokenizer** в задачах квантования.
 
 ##### GGUF(llama.cpp)
 
-We have submitted a [PR](https://github.com/ggerganov/llama.cpp/pull/4070) to the popular quantization repository [llama.cpp](https://github.com/ggerganov/llama.cpp) to fully support all HuggingFace pre-tokenizers, including ours.
+Мы отправили **[Pull Request (PR)](https://github.com/ggerganov/llama.cpp/pull/4070)** в популярный репозиторий квантования **[llama.cpp](https://github.com/ggerganov/llama.cpp)**, чтобы обеспечить **полную поддержку всех HuggingFace пред-токенизаторов**, включая наш.  
 
-While waiting for the PR to be merged, you can generate your GGUF model using the following steps:
+Пока **PR ожидает слияния**, вы можете **самостоятельно** сгенерировать свою **GGUF-модель**, выполнив следующие шаги:  
 
 ```bash
 git clone https://github.com/DOGEwbx/llama.cpp.git
@@ -408,24 +433,39 @@ python convert-hf-to-gguf.py <MODEL_PATH> --outfile <GGUF_PATH> --model-name dee
 ```
 ##### GPTQ(exllamav2)
 
-`UPDATE:`[exllamav2](https://github.com/turboderp/exllamav2) has been able to support Huggingface Tokenizer. Please pull the latest version and try out.
+### **Обновление:**  
+**[exllamav2](https://github.com/turboderp/exllamav2)** теперь поддерживает **HuggingFace Tokenizer**.  
+Пожалуйста, **обновите до последней версии** и попробуйте его в работе.  
 
-Remember to set RoPE scaling to 4 for correct output, more discussion could be found in this [PR](https://github.com/turboderp/exllamav2/pull/189).
+⚠ **Важно:** Установите **RoPE scaling** на **4**, чтобы получить корректный вывод. Дополнительное обсуждение можно найти в [этом PR](https://github.com/turboderp/exllamav2/pull/189).  
 
-#### How to use the deepseek-coder-instruct to complete the code?
+---
 
-Although the deepseek-coder-instruct models are not specifically trained for code completion tasks during supervised fine-tuning (SFT), they retain the capability to perform code completion effectively. To enable this functionality, you simply need to adjust the eos_token_id parameter. Set the eos_token_id to 32014, as opposed to its default value of 32021 in the deepseek-coder-instruct configuration. This modification prompts the model to recognize the end of a sequence differently, thereby facilitating code completion tasks.
+### **Как использовать deepseek-coder-instruct для автодополнения кода?**  
+
+Хотя модели **deepseek-coder-instruct** **не обучались специально** для задач автодополнения кода в процессе **Supervised Fine-Tuning (SFT)**, они **сохранили эту способность**.  
+
+Чтобы **активировать автодополнение**, необходимо изменить параметр **`eos_token_id`**:  
+- Установите **`eos_token_id = 32014`**, вместо стандартного значения **`32021`** в конфигурации **deepseek-coder-instruct**.  
+
+Эта модификация позволяет **модели корректно распознавать конец последовательности**, что **улучшает работу с задачами автодополнения кода**.
 
 
-### 8. Resources
-[awesome-deepseek-coder](https://github.com/deepseek-ai/awesome-deepseek-coder) is a curated list of open-source projects related to DeepSeek Coder.
+### **8. Ресурсы**  
+**[awesome-deepseek-coder](https://github.com/deepseek-ai/awesome-deepseek-coder)** — это подборка **open-source проектов**, связанных с **DeepSeek Coder**.  
 
-### 9. License
-This code repository is licensed under the MIT License. The use of DeepSeek Coder models is subject to the Model License. DeepSeek Coder supports commercial use.
+---
 
-See the [LICENSE-CODE](LICENSE-CODE) and [LICENSE-MODEL](LICENSE-MODEL) for more details.
+### **9. Лицензия**  
+Этот репозиторий с кодом распространяется по **MIT License**.  
+Использование моделей **DeepSeek Coder** регулируется **Model License**, при этом **поддерживается коммерческое использование**.  
 
-### 10. Citation
+Более подробную информацию можно найти в файлах **[LICENSE-CODE](LICENSE-CODE)** и **[LICENSE-MODEL](LICENSE-MODEL)**.  
+
+---
+
+### **10. Цитирование**  
+Если вы используете **DeepSeek Coder** в своих работах, пожалуйста, укажите следующую ссылку:  
 ```
 @misc{deepseek-coder,
   author = {Daya Guo, Qihao Zhu, Dejian Yang, Zhenda Xie, Kai Dong, Wentao Zhang, Guanting Chen, Xiao Bi, Y. Wu, Y.K. Li, Fuli Luo, Yingfei Xiong, Wenfeng Liang},
@@ -437,6 +477,8 @@ See the [LICENSE-CODE](LICENSE-CODE) and [LICENSE-MODEL](LICENSE-MODEL) for more
 }
 ```
 
-### 11. Contact
+---
 
-If you have any questions, please raise an issue or contact us at [service@deepseek.com](mailto:service@deepseek.com).
+### **11. Контакты**  
+Если у вас есть вопросы, создайте **issue** в репозитории или свяжитесь с нами по электронной почте:  
+📩 **[service@deepseek.com](mailto:service@deepseek.com)**.
